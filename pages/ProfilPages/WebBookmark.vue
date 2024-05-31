@@ -1,0 +1,3 @@
+<template>
+    <ProfilUserBookmark></ProfilUserBookmark>
+</template>

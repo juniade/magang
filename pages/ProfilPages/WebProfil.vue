@@ -1,0 +1,3 @@
+<template>
+   <ProfilUserProfil></ProfilUserProfil>
+</template>
