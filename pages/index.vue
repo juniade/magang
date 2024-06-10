@@ -3,6 +3,4 @@
         <Home></Home>
     </div>
 </template>
-<script setup>
-</script>
 

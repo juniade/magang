@@ -1,6 +1,6 @@
 <template>
     <div class="col-lg-4">
-        <div class="border">
+        <div class="border shadow">
             <NuxtLink to="/ProfilPages/WebProfil" class=" btn p-3 d-flex border-0 bg-white w-100">
                 <div class="me-1"><i class="fa-regular fa-user"></i></div>
                 <p class="m-0">My Profil</p>

@@ -47,7 +47,7 @@
                             <p class="text-success mt-1 fw-medium" style="font-size:11px"
                                 :style="{ display: confirmationPasswordMacth }">The password confirmation does macth</p>
                         </div>
-                        <UiBasebutton class="btn-dark w-100" @click="register">Register</UiBasebutton>
+                        <ModalRegisterModal @register="register" @login="login"></ModalRegisterModal>
                     </form>
                     <p>Already have an account?<NuxtLink to="/AuthPages/WebLogin" class="text-decoration-none"><b
                                 style="color:black">Login</b></NuxtLink>
@@ -67,7 +67,7 @@ const confirmationPasswordDoesNotMacth = ref("none")
 const confirmationPasswordMacth = ref("none")
 
 const signupData = reactive({
-    name:"",
+    name: "",
     username: "",
     email: "",
     password: "",
@@ -76,7 +76,7 @@ const signupData = reactive({
 })
 
 const passwordCheck = () => {
-    if (signupData.password.length < 6  && signupData.password.length > 0) {
+    if (signupData.password.length < 6 && signupData.password.length > 0) {
         passwordStatusDisplay.value = "block";
     } else {
         passwordStatusDisplay.value = "none";
@@ -100,22 +100,17 @@ const confirmationPasswordCheck = () => {
     confirmationPasswordMacth.value = "block";
 }
 
-const router=useRouter()
+const router = useRouter()
 const register = async () => {
-    if (signupData.password !== signupData.confirmationPassword || signupData.password.length < 6) {
-        signupData.confirmationPassword = ""
-        signupData.password = ""
-        confirmationPasswordDoesNotMacth.value = "none"
-        confirmationPasswordMacth.value = "none"
-        console.log('register if dijalankan')
-    } else {
-        console.log("register dijalankan")
-        console.log("ini aalah data signup",signupData)
-        await Store.getRegisterData(signupData)
-        router.push('/')
-    }
+    console.log("register dijalankan")
+    console.log("ini aalah data signup", signupData)
+    await Store.getRegisterData(signupData)
+
 }
 
+const login = () => {
+    router.push('/AuthPages/WebLogin')
+}
 
 // State to control password visibility
 const isPasswordVisible = ref(false);

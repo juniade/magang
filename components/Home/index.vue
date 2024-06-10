@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container-fluid">
         <div class="d-flex justify-content-center align-item-center mt-5">
             <HomeInformation></HomeInformation>
         </div>
@@ -24,12 +24,17 @@
 
 <script setup>
 import { useStory } from '~/stores/story';
+
 const counterStore = useStory();
+const getData=async()=>{
+    await counterStore.fetchStoryList("","","","");   
+}
+const getDatapage = async (params,author,idx,edit) => {
+    await counterStore.fetchStoryList(params,author,idx,edit)}
 
-onMounted(() => {
-    counterStore.fetchStoryList("", 1);
-});
-
+onMounted(()=>{
+    getData()
+})
 const allStory = computed(() => {
     return counterStore.storyList
 })
@@ -42,12 +47,13 @@ function cariHuruf(input) {
     nilai.value = input.trim()
     console.log('nilai.value: ',nilai.value)
     console.log('dijalankan')
-    if (nilai.value === "" && index.value===1) {
+    if (nilai.value === "") {
         console.log('if dijalankan')
-        counterStore.fetchStoryList("",index.value)
+        getData()
     }else{
         console.log('else dijalankan')
-        counterStore.fetchStoryList(nilai.value, 1)
+        getDatapage(nilai.value,"","","")
+     
     }
 
 }
@@ -75,7 +81,7 @@ const sortedList = computed(() => {
 });
 function loadmore(){
     index.value++
-    counterStore.fetchStoryList("", index.value);
+    counterStore.fetchStoryList("","", index.value,"");
     
 }
 </script>

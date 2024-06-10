@@ -5,8 +5,8 @@
 </template>
 <script setup>
 
-import LoginHeader from './loginheader.vue'
-import Navigation from './navigation.vue'
+import LoginHeader from '~/components/Header/loginheader.vue'
+import Navigation from '~/components/Header/navigation.vue'
 import {useAuth} from "~/stores/auth"
 
 const store=useAuth()

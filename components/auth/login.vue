@@ -32,7 +32,8 @@
 
 <script setup>
 import { useAuth } from '~/stores/auth';
-const Store = useAuth();
+
+const Store = useAuth()
 const router = useRouter()
 
 const loginData = reactive({

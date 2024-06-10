@@ -3,12 +3,17 @@
 </template>
 <script setup>
 import { useStory } from '~/stores/story';
+
 const store = useStory()
 const{id}=useRoute().params
 
+const fetchData = async () => {
+    await store.fetchStoryDetail(id);
+};
+
 onMounted(() => {
-    store.fetchStoryDetail(id)
-})
+    fetchData();
+});
 
 const data = computed(() => {
     return store.storyDetail

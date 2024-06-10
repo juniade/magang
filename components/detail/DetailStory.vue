@@ -4,16 +4,16 @@
             <div class="col-lg-8 col-sm-6">
                 <h3><b>{{ data_id.title }}</b></h3>
                 <p>{{ formatDate(data_id.createdAt)}}</p>
-                <div class="w-100">
-                    <img v-if="data_id.cover_image" :src="baseUrl + data_id.cover_image.url" class="img-fluid">
+                <div style="width:100%;height:70%">
+                    <img v-if="data_id.cover_image" :src="baseUrl + data_id.cover_image?.url" class="img-fluid" style="height:100%">
                 </div>
-                <p>{{ data_id.content }}</p>
+                <p class="mt-2">{{ data_id.content }}</p>
             </div>
             <div class="col-lg-4 col-sm-6">
                 <div class="p-3 border border-2">
                     <p class="d-flex justify-content-center ">Author</p>
                     <div class="d-flex justify-content-center">
-                        <img v-if="data_id.author" :src="baseUrl + data_id.author.profile_picture.formats.thumbnail.url"
+                        <img v-if="data_id.author" :src="baseUrl + data_id?.author.profile_picture?.formats?.thumbnail?.url"
                             class="rounded-circle" style="width:5opx;height:50px">
                     </div>
                     <p class="d-flex justify-content-center pt-3 m-0 " v-if="data_id.author"><b>{{ data_id.author.name
@@ -29,7 +29,7 @@ defineProps({
     data_id:Object
 })
 
-const baseUrl = "https://storytime-api.strapi.timedoor-js.web.id";
+const baseUrl = "https://storytime-api.strapi.timedoor-js.web.id/";
 
 function formatDate(dateStr) {
     // Parse the ISO 8601 date string into a Date object
